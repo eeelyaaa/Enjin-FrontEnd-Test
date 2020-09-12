@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <input type="text" v-model="search" @click="searchFunc('name')" placeholder="Search! by name" class="bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300"/>
-    <input type="text" v-model="search" @click="searchFunc('address')" placeholder="Search! by address" class="bg-gray-200 hover:bg-white hover:border-black-1 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300"/>
+    <input type="text" v-model="search" @click="searchFunc('name')" placeholder="Search! by name" class="bg-gray-200 hover:bg-white hover:border-gray-300 hover:border-solid hover:border-4 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 border-blue-400 border-solid border-4 rounded mx-2"/>
+    <input type="text" v-model="search" @click="searchFunc('address')" placeholder="Search! by address" class="bg-gray-200 hover:bg-white hover:border-black-1 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 border-blue-400 border-solid border-4 rounded mx-2"/>
     <select v-model="search" @click="searchFunc('occupation')" >
       <option disabled value="">Please Select For Occupation</option>
       <option>Developer</option>
@@ -13,24 +13,24 @@
       <option>Dentist</option>
     </select>
 
-    <div class="align-center">
-      <table id="firstTable" class="table-auto">
+    <div class="w-full">
+      <table id="firstTable" class="table-auto m-auto">
         <thead>
-          <tr class="group border bg-indigo-600 text-white">
-            <th @click="sort('name')">Name</th>
-            <th @click="sort('address')">Address</th>
-            <th @click="sort('phone')">Phone</th>
-            <th @click="sort('occupation')">Occupation</th>
-            <th @click="sort('created_at')">Created At</th>
+          <tr class="group border bg-indigo-600 text-white hover:bg-white hover:text-indigo-600">
+            <th class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-600" @click="sort('name')">Name</th>
+            <th class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-600" @click="sort('address')">Address</th>
+            <th class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-600" @click="sort('phone')">Phone</th>
+            <th class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-600" @click="sort('occupation')">Occupation</th>
+            <th class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-600" @click="sort('created_at')">Created At</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="i in sortedDataTable" :key="i.id">
-            <td class="">{{i.name}}</td>
-            <td class="">{{i.address}}</td>
-            <td class="">{{i.phone}}</td>
-            <td class="">{{i.occupation}}</td>
-            <td class="">{{i.created_at}}</td>
+            <td class="border">{{i.name}}</td>
+            <td class="border">{{i.address}}</td>
+            <td class="border">{{i.phone}}</td>
+            <td class="border">{{i.occupation}}</td>
+            <td class="border">{{i.created_at}}</td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +40,18 @@
       <button @click="pPage" class="bg-transparent hover:bg-blue-400 text-blue-800 hover:text-white border-blue-400 border-solid border-4 rounded-tl-lg m-5 px-10">Previous</button>
       <button @click="nPage" class="bg-transparent hover:bg-blue-400 text-blue-800 hover:text-white border-blue-400 border-solid border-4 rounded-tr-lg m-5 px-10">Next</button>
     </p>
-    debug: sort={{currentSort}}, dir={{currentSortDir}}
+    debugging: sort={{currentSort}}, dir={{currentSortDir}}
+    <div class="max-w-sm rounded overflow-hidden shadow-xl m-auto mt-8 bg-gray-100">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">Some Info On the Project</div>
+        <p class="text-gray-700 text-base">
+         When you first open the project, the table will be empty. To show data,<br>click inside one of the search fields <br>
+         Under the table, you will notice text that says debugging... This shows by which header the table is sorted  <br>
+         and by whether it is in ascending or descending order <br>
+        </p>
+      </div>
+      
+    </div>
   </div>
 </template>
 
@@ -58,7 +69,7 @@ export default {
       dataTable: [],
       currentSort: 'name',
       currentSortDir: 'asc',
-      pageSize: 5,
+      pageSize: 8,
       currentPage: 1,
       search: '',
       searchType: ''
@@ -74,7 +85,6 @@ export default {
     },
     searchFunc: function(s) {
       this.searchType = s;
-      console.log(this.search);
     },
     nPage:function() {
       if((this.currentPage*this.pageSize) < this.dataTable.length) this.currentPage++;
@@ -115,34 +125,6 @@ export default {
   }
 }
 </script>
+
 <style scoped>
-/* table {
-  font-family: 'Open Sans', sans-serif;
-  width: 750px;
-  border-collapse: collapse;
-  border: 3px solid #44475C;
-  margin: 10px 10px 0 10px;
-}
-
-table th {
-  text-transform: uppercase;
-  text-align: left;
-  background: #44475C;
-  color: #FFF;
-  padding: 8px;
-  min-width: 30px;
-}
-
-table td {
-  text-align: left;
-  padding: 8px;
-  border-right: 2px solid #7D82A8;
-}
-table td:last-child {
-  border-right: none;
-}
-table tbody tr:nth-child(2n) td {
-  background: #D4D8F9;
-} */
-
 </style>
