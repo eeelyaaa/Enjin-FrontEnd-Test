@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> 
+    <div class='flex w-full bg-blue-200 justify-center my-10'>
+      <p class='text-lg font-bold text-center '>Enjin FrontEnd Developer Test</p>
     </div>
     <router-view/>
   </div>
@@ -16,16 +16,4 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

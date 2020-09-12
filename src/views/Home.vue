@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <input type="text" v-model="search" @click="searchFunc('name')" placeholder="Search! by name" />
-    <input type="text" v-model="search" @click="searchFunc('address')" placeholder="Search! by address" />
+    <input type="text" v-model="search" @click="searchFunc('name')" placeholder="Search! by name" class="bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300"/>
+    <input type="text" v-model="search" @click="searchFunc('address')" placeholder="Search! by address" class="bg-gray-200 hover:bg-white hover:border-black-1 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300"/>
     <select v-model="search" @click="searchFunc('occupation')" >
       <option disabled value="">Please Select For Occupation</option>
       <option>Developer</option>
@@ -13,29 +13,32 @@
       <option>Dentist</option>
     </select>
 
-    <table id="firstTable">
-      <thead>
-        <tr>
-          <th @click="sort('name')">Name</th>
-          <th @click="sort('address')">Address</th>
-          <th @click="sort('phone')">Phone</th>
-          <th @click="sort('occupation')">Occupation</th>
-          <th @click="sort('created_at')">Created At</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="i in sortedDataTable" :key="i.id">
-          <td>{{i.name}}</td>
-          <td>{{i.address}}</td>
-          <td>{{i.phone}}</td>
-          <td>{{i.occupation}}</td>
-          <td>{{i.created_at}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="align-center">
+      <table id="firstTable" class="table-auto">
+        <thead>
+          <tr class="group border bg-indigo-600 text-white">
+            <th @click="sort('name')">Name</th>
+            <th @click="sort('address')">Address</th>
+            <th @click="sort('phone')">Phone</th>
+            <th @click="sort('occupation')">Occupation</th>
+            <th @click="sort('created_at')">Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="i in sortedDataTable" :key="i.id">
+            <td class="">{{i.name}}</td>
+            <td class="">{{i.address}}</td>
+            <td class="">{{i.phone}}</td>
+            <td class="">{{i.occupation}}</td>
+            <td class="">{{i.created_at}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <p>
-      <button @click="pPage">Previous</button>
-      <button @click="nPage">Next</button>
+      <button @click="pPage" class="bg-transparent hover:bg-blue-400 text-blue-800 hover:text-white border-blue-400 border-solid border-4 rounded-tl-lg m-5 px-10">Previous</button>
+      <button @click="nPage" class="bg-transparent hover:bg-blue-400 text-blue-800 hover:text-white border-blue-400 border-solid border-4 rounded-tr-lg m-5 px-10">Next</button>
     </p>
     debug: sort={{currentSort}}, dir={{currentSortDir}}
   </div>
@@ -113,7 +116,7 @@ export default {
 }
 </script>
 <style scoped>
-table {
+/* table {
   font-family: 'Open Sans', sans-serif;
   width: 750px;
   border-collapse: collapse;
@@ -140,6 +143,6 @@ table td:last-child {
 }
 table tbody tr:nth-child(2n) td {
   background: #D4D8F9;
-}
+} */
 
 </style>
